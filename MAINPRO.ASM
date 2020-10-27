@@ -1,11 +1,11 @@
-;* ════════════════════════════════════════════════════════════════════ *;
+;* тХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХР *;
 ;                           mainpro.asm                                  ;
 ;                                                                        ;
 ;                Sheduler`s multi-process  library                       ;
 ;                                                                        ;
 ;                       (C)  Kaling N.V. 1994                            ;
 ;                                                                        ;
-;* ════════════════════════════════════════════════════════════════════ *;
+;* тХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХР *;
 
         .model large,C
         LOCALS
@@ -16,7 +16,7 @@
 
 ProcessGuard     = 1802H
 TimePeriod       = 55
-HighPriority     = 101          ; первый непривилегированный приоритет
+HighPriority     = 101          ; ╨┐╨╡╤А╨▓╤Л╨╣ ╨╜╨╡╨┐╤А╨╕╨▓╨╕╨╗╨╡╨│╨╕╤А╨╛╨▓╨░╨╜╨╜╤Л╨╣ ╨┐╤А╨╕╨╛╤А╨╕╤В╨╡╤В
 
 ;--------------------------------------------------------
 
@@ -26,22 +26,22 @@ FarAddr STRUC
 ENDS
 
 SignalDef STRUC
- SI_Name        dw 0            ; имя (номер) сигнала
- SI_Next        FarAddr <>      ; следующий сигнал в списке сигналов
- SI_NextActiv   FarAddr <>      ; следующий сигнал в списке активных сигналов
- SI_NewTurn     FarAddr <>      ; указатель на очередь процессов
- SI_OldTurn     FarAddr <>      ; указатель на очередь процессов
- SI_Activ       dw 0            ; флаг активности сигнала
+ SI_Name        dw 0            ; ╨╕╨╝╤П (╨╜╨╛╨╝╨╡╤А) ╤Б╨╕╨│╨╜╨░╨╗╨░
+ SI_Next        FarAddr <>      ; ╤Б╨╗╨╡╨┤╤Г╤О╤Й╨╕╨╣ ╤Б╨╕╨│╨╜╨░╨╗ ╨▓ ╤Б╨┐╨╕╤Б╨║╨╡ ╤Б╨╕╨│╨╜╨░╨╗╨╛╨▓
+ SI_NextActiv   FarAddr <>      ; ╤Б╨╗╨╡╨┤╤Г╤О╤Й╨╕╨╣ ╤Б╨╕╨│╨╜╨░╨╗ ╨▓ ╤Б╨┐╨╕╤Б╨║╨╡ ╨░╨║╤В╨╕╨▓╨╜╤Л╤Е ╤Б╨╕╨│╨╜╨░╨╗╨╛╨▓
+ SI_NewTurn     FarAddr <>      ; ╤Г╨║╨░╨╖╨░╤В╨╡╨╗╤М ╨╜╨░ ╨╛╤З╨╡╤А╨╡╨┤╤М ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╨╛╨▓
+ SI_OldTurn     FarAddr <>      ; ╤Г╨║╨░╨╖╨░╤В╨╡╨╗╤М ╨╜╨░ ╨╛╤З╨╡╤А╨╡╨┤╤М ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╨╛╨▓
+ SI_Activ       dw 0            ; ╤Д╨╗╨░╨│ ╨░╨║╤В╨╕╨▓╨╜╨╛╤Б╤В╨╕ ╤Б╨╕╨│╨╜╨░╨╗╨░
 ENDS
 
 ProcessEnvironment STRUC
- PE_ProcAddr    FarAddr <>      ; адрес начала процедуры процесса
- PE_Next        FarAddr <>      ; адрес структуры следующего процесса
- PE_Pre         FarAddr <>      ; адрес структуры предыдущего процесса
- PE_NextWait    FarAddr <>      ; следующий процесс в очереди сигнала
- PE_PreWait     FarAddr <>      ; предыдущий процесс в очереди сигнала
- PE_NextIntr    FarAddr <>      ; следующий прерванный сигналом прцесс
- PE_StackBegin  FarAddr <>      ; нулевой уровень стека
+ PE_ProcAddr    FarAddr <>      ; ╨░╨┤╤А╨╡╤Б ╨╜╨░╤З╨░╨╗╨░ ╨┐╤А╨╛╤Ж╨╡╨┤╤Г╤А╤Л ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╨░
+ PE_Next        FarAddr <>      ; ╨░╨┤╤А╨╡╤Б ╤Б╤В╤А╤Г╨║╤В╤Г╤А╤Л ╤Б╨╗╨╡╨┤╤Г╤О╤Й╨╡╨│╨╛ ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╨░
+ PE_Pre         FarAddr <>      ; ╨░╨┤╤А╨╡╤Б ╤Б╤В╤А╤Г╨║╤В╤Г╤А╤Л ╨┐╤А╨╡╨┤╤Л╨┤╤Г╤Й╨╡╨│╨╛ ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╨░
+ PE_NextWait    FarAddr <>      ; ╤Б╨╗╨╡╨┤╤Г╤О╤Й╨╕╨╣ ╨┐╤А╨╛╤Ж╨╡╤Б╤Б ╨▓ ╨╛╤З╨╡╤А╨╡╨┤╨╕ ╤Б╨╕╨│╨╜╨░╨╗╨░
+ PE_PreWait     FarAddr <>      ; ╨┐╤А╨╡╨┤╤Л╨┤╤Г╤Й╨╕╨╣ ╨┐╤А╨╛╤Ж╨╡╤Б╤Б ╨▓ ╨╛╤З╨╡╤А╨╡╨┤╨╕ ╤Б╨╕╨│╨╜╨░╨╗╨░
+ PE_NextIntr    FarAddr <>      ; ╤Б╨╗╨╡╨┤╤Г╤О╤Й╨╕╨╣ ╨┐╤А╨╡╤А╨▓╨░╨╜╨╜╤Л╨╣ ╤Б╨╕╨│╨╜╨░╨╗╨╛╨╝ ╨┐╤А╤Ж╨╡╤Б╤Б
+ PE_StackBegin  FarAddr <>      ; ╨╜╤Г╨╗╨╡╨▓╨╛╨╣ ╤Г╤А╨╛╨▓╨╡╨╜╤М ╤Б╤В╨╡╨║╨░
  PE_Priority    dw 0
  PE_Lock        dw 0
  PE_Live        dw 1
@@ -108,19 +108,19 @@ MultiTimer:     PUBLIC  MultiTimer
                 inc     ax
                 mov     TimeMeter,ax
                 xor     dx,ax
-                and     dx,ActivMarks           ; оставляем только активные метки
-                xor     cx,cx                   ; флаг необходимости перепланирования
+                and     dx,ActivMarks           ; ╨╛╤Б╤В╨░╨▓╨╗╤П╨╡╨╝ ╤В╨╛╨╗╤М╨║╨╛ ╨░╨║╤В╨╕╨▓╨╜╤Л╨╡ ╨╝╨╡╤В╨║╨╕
+                xor     cx,cx                   ; ╤Д╨╗╨░╨│ ╨╜╨╡╨╛╨▒╤Е╨╛╨┤╨╕╨╝╨╛╤Б╤В╨╕ ╨┐╨╡╤А╨╡╨┐╨╗╨░╨╜╨╕╤А╨╛╨▓╨░╨╜╨╕╤П
                 xor     bx,bx
-NextMark:       inc     bx                      ; номер
-                inc     bx                      ;    метки
-                or      dx,dx                   ; есть активные метки ?
-                je      EmptyMarks              ; нет
+NextMark:       inc     bx                      ; ╨╜╨╛╨╝╨╡╤А
+                inc     bx                      ;    ╨╝╨╡╤В╨║╨╕
+                or      dx,dx                   ; ╨╡╤Б╤В╤М ╨░╨║╤В╨╕╨▓╨╜╤Л╨╡ ╨╝╨╡╤В╨║╨╕ ?
+                je      EmptyMarks              ; ╨╜╨╡╤В
                 shr     dx,1
                 jnc     NextMark
                 inc     cx
-                mov     ax,MarkSignal[bx]       ; выбираем номер сигнала, соответствующего метке
+                mov     ax,MarkSignal[bx]       ; ╨▓╤Л╨▒╨╕╤А╨░╨╡╨╝ ╨╜╨╛╨╝╨╡╤А ╤Б╨╕╨│╨╜╨░╨╗╨░, ╤Б╨╛╨╛╤В╨▓╨╡╤В╤Б╤В╨▓╤Г╤О╤Й╨╡╨│╨╛ ╨╝╨╡╤В╨║╨╡
                 push    ax
-                call    far ptr SystemSend      ; посылаем сигнал
+                call    far ptr SystemSend      ; ╨┐╨╛╤Б╤Л╨╗╨░╨╡╨╝ ╤Б╨╕╨│╨╜╨░╨╗
                 pop     ax
                 jmp     short NextMark
 
@@ -130,7 +130,7 @@ EmptyMarks:     inc     TimeCompensator
                 sub     TimeCompensator,TimePeriod
 
 StdTimer:       pushf
-                call    dword ptr cs:OLD08                      ; старый обработчик
+                call    dword ptr cs:OLD08                      ; ╤Б╤В╨░╤А╤Л╨╣ ╨╛╨▒╤А╨░╨▒╨╛╤В╤З╨╕╨║
                 jmp     short SchedAct
 
 NotStdTimer:    mov     al,20H
@@ -139,9 +139,9 @@ NotStdTimer:    mov     al,20H
 SchedAct:       mov     ax,SchedPeriod
                 inc     SchedCompensator
                 or      cx,cx
-                jne     YesSched                        ; перепланирование по метке
+                jne     YesSched                        ; ╨┐╨╡╤А╨╡╨┐╨╗╨░╨╜╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┐╨╛ ╨╝╨╡╤В╨║╨╡
                 cmp     SchedCompensator,ax
-                jb      NotSched                        ; перепланирование по кванту
+                jb      NotSched                        ; ╨┐╨╡╤А╨╡╨┐╨╗╨░╨╜╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┐╨╛ ╨║╨▓╨░╨╜╤В╤Г
                 mov     SchedCompensator,0
 
 YesSched:       pop     ds
@@ -187,30 +187,30 @@ GoodGuard:
 
 SignExe:        les     bx,FirstActivSignal
 DoubleSignExe:  mov     ax,es
-                add     ax,bx                                   ; есть активные сигналы ?
+                add     ax,bx                                   ; ╨╡╤Б╤В╤М ╨░╨║╤В╨╕╨▓╨╜╤Л╨╡ ╤Б╨╕╨│╨╜╨░╨╗╤Л ?
                 jnz     @@1
-                jmp     IntrTest                                ; нет
+                jmp     IntrTest                                ; ╨╜╨╡╤В
           @@1:  mov     ax,es:[bx].SI_OldTurn.FA_Off
-                add     ax,es:[bx].SI_OldTurn.FA_Seg            ; есть процесс в очереди ?
-                jnz     SignAct                                 ; да
-                mov     es:[bx].SI_Activ,0                      ; нет
+                add     ax,es:[bx].SI_OldTurn.FA_Seg            ; ╨╡╤Б╤В╤М ╨┐╤А╨╛╤Ж╨╡╤Б╤Б ╨▓ ╨╛╤З╨╡╤А╨╡╨┤╨╕ ?
+                jnz     SignAct                                 ; ╨┤╨░
+                mov     es:[bx].SI_Activ,0                      ; ╨╜╨╡╤В
                 les     bx,dword ptr es:[bx].SI_NextActiv       ;
-                mov     FirstActivSignal.FA_Off,bx              ; вычеркиваем сигнал
+                mov     FirstActivSignal.FA_Off,bx              ; ╨▓╤Л╤З╨╡╤А╨║╨╕╨▓╨░╨╡╨╝ ╤Б╨╕╨│╨╜╨░╨╗
                 mov     FirstActivSignal.FA_Seg,es
                 jmp     short SignExe
 
 SignAct:        les     bx,dword ptr es:[bx].SI_OldTurn
-                cmp     CurrentLock,0                           ; разрешено перепланирование прерванного просесса ?
-                je      IntrIns                                 ; да
-                cmp     es:[bx].PE_Priority,HighPriority        ; нет, первый просесс очереди имеет привилегированный приоритет ?
-                jb      ClearProc                               ; да
-                jmp     MultiBack                               ; нет
+                cmp     CurrentLock,0                           ; ╤А╨░╨╖╤А╨╡╤И╨╡╨╜╨╛ ╨┐╨╡╤А╨╡╨┐╨╗╨░╨╜╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┐╤А╨╡╤А╨▓╨░╨╜╨╜╨╛╨│╨╛ ╨┐╤А╨╛╤Б╨╡╤Б╤Б╨░ ?
+                je      IntrIns                                 ; ╨┤╨░
+                cmp     es:[bx].PE_Priority,HighPriority        ; ╨╜╨╡╤В, ╨┐╨╡╤А╨▓╤Л╨╣ ╨┐╤А╨╛╤Б╨╡╤Б╤Б ╨╛╤З╨╡╤А╨╡╨┤╨╕ ╨╕╨╝╨╡╨╡╤В ╨┐╤А╨╕╨▓╨╕╨╗╨╡╨│╨╕╤А╨╛╨▓╨░╨╜╨╜╤Л╨╣ ╨┐╤А╨╕╨╛╤А╨╕╤В╨╡╤В ?
+                jb      ClearProc                               ; ╨┤╨░
+                jmp     MultiBack                               ; ╨╜╨╡╤В
 
-IntrIns:        mov     ax,InterruptTurn.FA_Seg                 ;проверка наличия прерванных процессов
+IntrIns:        mov     ax,InterruptTurn.FA_Seg                 ;╨┐╤А╨╛╨▓╨╡╤А╨║╨░ ╨╜╨░╨╗╨╕╤З╨╕╤П ╨┐╤А╨╡╤А╨▓╨░╨╜╨╜╤Л╤Е ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╨╛╨▓
                 add     ax,InterruptTurn.FA_Off
-                jz      ClearProc                               ; есть прерванные процессы ?
-                les     bx,InterruptTurn                        ; проверка наличия прерванных процессов
-                xor     ax,ax                                   ; да
+                jz      ClearProc                               ; ╨╡╤Б╤В╤М ╨┐╤А╨╡╤А╨▓╨░╨╜╨╜╤Л╨╡ ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╤Л ?
+                les     bx,InterruptTurn                        ; ╨┐╤А╨╛╨▓╨╡╤А╨║╨░ ╨╜╨░╨╗╨╕╤З╨╕╤П ╨┐╤А╨╡╤А╨▓╨░╨╜╨╜╤Л╤Е ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╨╛╨▓
+                xor     ax,ax                                   ; ╨┤╨░
                 xchg    ax,es:[bx].PE_NextIntr.FA_Seg
                 mov     InterruptTurn.FA_Seg,ax
                 xor     ax,ax
@@ -218,21 +218,21 @@ IntrIns:        mov     ax,InterruptTurn.FA_Seg                 ;проверка наличи
                 mov     InterruptTurn.FA_Off,ax
                 jmp     Activate
 
-ClearProc:      mov     ax,es:[bx].PE_NextWait.FA_Off           ; вычеркиваем
-                mov     dx,es:[bx].PE_NextWait.FA_Seg           ;    процесс
-                lds     di,FirstActivSignal                     ;      из
-                mov     ds:[di].SI_OldTurn.FA_Off,ax            ;        старой
-                mov     ds:[di].SI_OldTurn.FA_Seg,dx            ;          очереди
+ClearProc:      mov     ax,es:[bx].PE_NextWait.FA_Off           ; ╨▓╤Л╤З╨╡╤А╨║╨╕╨▓╨░╨╡╨╝
+                mov     dx,es:[bx].PE_NextWait.FA_Seg           ;    ╨┐╤А╨╛╤Ж╨╡╤Б╤Б
+                lds     di,FirstActivSignal                     ;      ╨╕╨╖
+                mov     ds:[di].SI_OldTurn.FA_Off,ax            ;        ╤Б╤В╨░╤А╨╛╨╣
+                mov     ds:[di].SI_OldTurn.FA_Seg,dx            ;          ╨╛╤З╨╡╤А╨╡╨┤╨╕
                 mov     ax,@data
                 mov     ds,ax
                 mov     es:[bx].PE_Wait,0
-                cmp     es:[bx].PE_Live,0                       ; процесс активен ?
-                jne     RememberPre                             ; да
-                jmp     SignExe                                 ; нет
+                cmp     es:[bx].PE_Live,0                       ; ╨┐╤А╨╛╤Ж╨╡╤Б╤Б ╨░╨║╤В╨╕╨▓╨╡╨╜ ?
+                jne     RememberPre                             ; ╨┤╨░
+                jmp     SignExe                                 ; ╨╜╨╡╤В
 
-RememberPre:                                                    ; запоминание прерванного процесса
-                cmp     CurrentLock,0                           ; разрешено перепланирование прерванного просесса ?
-                je      Activate                                ; да
+RememberPre:                                                    ; ╨╖╨░╨┐╨╛╨╝╨╕╨╜╨░╨╜╨╕╨╡ ╨┐╤А╨╡╤А╨▓╨░╨╜╨╜╨╛╨│╨╛ ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╨░
+                cmp     CurrentLock,0                           ; ╤А╨░╨╖╤А╨╡╤И╨╡╨╜╨╛ ╨┐╨╡╤А╨╡╨┐╨╗╨░╨╜╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┐╤А╨╡╤А╨▓╨░╨╜╨╜╨╛╨│╨╛ ╨┐╤А╨╛╤Б╨╡╤Б╤Б╨░ ?
+                je      Activate                                ; ╨┤╨░
                 push    bx
                 push    es
                 mov     ax,@data
@@ -248,11 +248,11 @@ RememberPre:                                                    ; запоминание пр
                 pop     bx
                 jmp     short Activate
 
-IntrTest:       les     bx,InterruptTurn                        ;проверка наличия прерванных процессов
+IntrTest:       les     bx,InterruptTurn                        ;╨┐╤А╨╛╨▓╨╡╤А╨║╨░ ╨╜╨░╨╗╨╕╤З╨╕╤П ╨┐╤А╨╡╤А╨▓╨░╨╜╨╜╤Л╤Е ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╨╛╨▓
                 mov     ax,es
                 add     ax,bx
-                jz      MultiBack                               ; есть прерванные процессы ?
-                xor     ax,ax                                   ; да
+                jz      MultiBack                               ; ╨╡╤Б╤В╤М ╨┐╤А╨╡╤А╨▓╨░╨╜╨╜╤Л╨╡ ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╤Л ?
+                xor     ax,ax                                   ; ╨┤╨░
                 xchg    ax,es:[bx].PE_NextIntr.FA_Seg
                 mov     InterruptTurn.FA_Seg,ax
                 xor     ax,ax
@@ -263,19 +263,19 @@ IntrTest:       les     bx,InterruptTurn                        ;проверка наличи
 MultiBack:      xor     cx,cx
                 les     bx,CurrProc
 
-LockTest:       cmp     CurrentLock,0                           ; процессу разрешено перепланирование ?
+LockTest:       cmp     CurrentLock,0                           ; ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╤Г ╤А╨░╨╖╤А╨╡╤И╨╡╨╜╨╛ ╨┐╨╡╤А╨╡╨┐╨╗╨░╨╜╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ?
                 je      GoodLock
                 jmp     RestAndExit
 
 GoodLock:       les     bx,dword ptr es:[bx].PE_Next
 
 TestFree:       mov     ax,es
-                add     ax,bx                                   ; дошли до конца очереди ?
+                add     ax,bx                                   ; ╨┤╨╛╤И╨╗╨╕ ╨┤╨╛ ╨║╨╛╨╜╤Ж╨░ ╨╛╤З╨╡╤А╨╡╨┤╨╕ ?
                 jnz     Activate
-                or      cx,cx                                   ; проверка на зацикливание, т.е.
-                jne     BackExit                                ; отсутствие активных
-                inc     cx                                      ; задач в очереди
-                les     bx,BackProc.PE_Next                     ; прыгаем в начало очереди
+                or      cx,cx                                   ; ╨┐╤А╨╛╨▓╨╡╤А╨║╨░ ╨╜╨░ ╨╖╨░╤Ж╨╕╨║╨╗╨╕╨▓╨░╨╜╨╕╨╡, ╤В.╨╡.
+                jne     BackExit                                ; ╨╛╤В╤Б╤Г╤В╤Б╤В╨▓╨╕╨╡ ╨░╨║╤В╨╕╨▓╨╜╤Л╤Е
+                inc     cx                                      ; ╨╖╨░╨┤╨░╤З ╨▓ ╨╛╤З╨╡╤А╨╡╨┤╨╕
+                les     bx,BackProc.PE_Next                     ; ╨┐╤А╤Л╨│╨░╨╡╨╝ ╨▓ ╨╜╨░╤З╨░╨╗╨╛ ╨╛╤З╨╡╤А╨╡╨┤╨╕
                 jmp     short TestFree
 
 BackExit:       lea     ax,BackProc
@@ -292,14 +292,14 @@ TestNextGuard:  cmp     es:[bx].PE_Guard,ProcessGuard
                 je      IsLive
                 lea     ax,TextBadNextProcess
                 call    GrobMashina
-IsLive:         cmp     es:[bx].PE_Live,0                       ; процесс активен ?
+IsLive:         cmp     es:[bx].PE_Live,0                       ; ╨┐╤А╨╛╤Ж╨╡╤Б╤Б ╨░╨║╤В╨╕╨▓╨╡╨╜ ?
                 je      NextProc
-IsWait:         cmp     es:[bx].PE_Wait,0                       ; процесс приостановлен ?
+IsWait:         cmp     es:[bx].PE_Wait,0                       ; ╨┐╤А╨╛╤Ж╨╡╤Б╤Б ╨┐╤А╨╕╨╛╤Б╤В╨░╨╜╨╛╨▓╨╗╨╡╨╜ ?
                 jne     NextProc
                 mov     CurrProc.FA_Off,bx
                 mov     CurrProc.FA_Seg,es
 
-RestAndExit:    mov     SchedCompensator,0              ; установка свежего кванта для процесса
+RestAndExit:    mov     SchedCompensator,0              ; ╤Г╤Б╤В╨░╨╜╨╛╨▓╨║╨░ ╤Б╨▓╨╡╨╢╨╡╨│╨╛ ╨║╨▓╨░╨╜╤В╨░ ╨┤╨╗╤П ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╨░
                 mov     ss,es:[bx].PE_SS
                 mov     sp,es:[bx].PE_SP
                 pop     es
@@ -355,8 +355,8 @@ _StartScheduler PROC    FAR
                 jne     @@Exit
                 mov     [SchedulerWorking],1
 
-                lea     ax,BackProc                             ; устанавливаем входильник
-                mov     CurrProc.FA_Off,ax                      ;    текущим процессом
+                lea     ax,BackProc                             ; ╤Г╤Б╤В╨░╨╜╨░╨▓╨╗╨╕╨▓╨░╨╡╨╝ ╨▓╤Е╨╛╨┤╨╕╨╗╤М╨╜╨╕╨║
+                mov     CurrProc.FA_Off,ax                      ;    ╤В╨╡╨║╤Г╤Й╨╕╨╝ ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╨╛╨╝
                 mov     CurrProc.FA_Seg,ds
 
                 xor     ax,ax
@@ -502,7 +502,7 @@ SetTimerNew     PROC    NEAR
                 cli
                 push    ds
 
-                mov     ax,@data                                ; инициализация ds
+                mov     ax,@data                                ; ╨╕╨╜╨╕╤Ж╨╕╨░╨╗╨╕╨╖╨░╤Ж╨╕╤П ds
                 mov     ds,ax
 
                 mov     al,00110110B
@@ -535,7 +535,7 @@ SetTimerOld     PROC    NEAR
                 push    ax
                 push    ds
 
-                mov     ax,@data                                ; инициализация ds
+                mov     ax,@data                                ; ╨╕╨╜╨╕╤Ж╨╕╨░╨╗╨╕╨╖╨░╤Ж╨╕╤П ds
                 mov     ds,ax
 
                 mov     al,00110110B
@@ -587,24 +587,24 @@ SystemSend      PROC    FAR   nam:word
                 jne     SignExist
                 lea     ax,TextNotSystemSignal
                 call    GrobMashina
-SignExist:      cmp     es:[bx].SI_Activ,0              ; проверка на повторную активизацию
-                jne     SySiBadExit                     ; попытка повторной активизации
-                mov     es:[bx].SI_Activ,1              ; флаг активности
-                xor     ax,ax                           ; перемещение новой
-                xchg    ax,es:[bx].SI_NewTurn.FA_Seg    ;  очереди
-                mov     es:[bx].SI_OldTurn.FA_Seg,ax    ;   в старую
-                xor     ax,ax                           ;    и обнуление
-                xchg    ax,es:[bx].SI_NewTurn.FA_Off    ;     новой
-                mov     es:[bx].SI_OldTurn.FA_Off,ax    ;      очереди
+SignExist:      cmp     es:[bx].SI_Activ,0              ; ╨┐╤А╨╛╨▓╨╡╤А╨║╨░ ╨╜╨░ ╨┐╨╛╨▓╤В╨╛╤А╨╜╤Г╤О ╨░╨║╤В╨╕╨▓╨╕╨╖╨░╤Ж╨╕╤О
+                jne     SySiBadExit                     ; ╨┐╨╛╨┐╤Л╤В╨║╨░ ╨┐╨╛╨▓╤В╨╛╤А╨╜╨╛╨╣ ╨░╨║╤В╨╕╨▓╨╕╨╖╨░╤Ж╨╕╨╕
+                mov     es:[bx].SI_Activ,1              ; ╤Д╨╗╨░╨│ ╨░╨║╤В╨╕╨▓╨╜╨╛╤Б╤В╨╕
+                xor     ax,ax                           ; ╨┐╨╡╤А╨╡╨╝╨╡╤Й╨╡╨╜╨╕╨╡ ╨╜╨╛╨▓╨╛╨╣
+                xchg    ax,es:[bx].SI_NewTurn.FA_Seg    ;  ╨╛╤З╨╡╤А╨╡╨┤╨╕
+                mov     es:[bx].SI_OldTurn.FA_Seg,ax    ;   ╨▓ ╤Б╤В╨░╤А╤Г╤О
+                xor     ax,ax                           ;    ╨╕ ╨╛╨▒╨╜╤Г╨╗╨╡╨╜╨╕╨╡
+                xchg    ax,es:[bx].SI_NewTurn.FA_Off    ;     ╨╜╨╛╨▓╨╛╨╣
+                mov     es:[bx].SI_OldTurn.FA_Off,ax    ;      ╨╛╤З╨╡╤А╨╡╨┤╨╕
                 lea     di,FirstActivSignal
                 les     bx,FirstActivSignal
-SetCicle:       mov     ax,es                           ; проверка на нулевой адрес
+SetCicle:       mov     ax,es                           ; ╨┐╤А╨╛╨▓╨╡╤А╨║╨░ ╨╜╨░ ╨╜╤Г╨╗╨╡╨▓╨╛╨╣ ╨░╨┤╤А╨╡╤Б
                 add     ax,bx
                 je      SetSignal
                 mov     ax,es:[bx].SI_Name
-                cmp     ax,nam                          ; проверка на приоритет
+                cmp     ax,nam                          ; ╨┐╤А╨╛╨▓╨╡╤А╨║╨░ ╨╜╨░ ╨┐╤А╨╕╨╛╤А╨╕╤В╨╡╤В
                 jae     SetSignal                       ; if N>=n
-                mov     di,bx                           ; поимение следующего сигнала
+                mov     di,bx                           ; ╨┐╨╛╨╕╨╝╨╡╨╜╨╕╨╡ ╤Б╨╗╨╡╨┤╤Г╤О╤Й╨╡╨│╨╛ ╤Б╨╕╨│╨╜╨░╨╗╨░
                 add     di,SI_NextActiv
                 push    es
                 pop     ds
@@ -643,5 +643,6 @@ GrobMashina     ENDP
 
 
                 END
+
 
 
